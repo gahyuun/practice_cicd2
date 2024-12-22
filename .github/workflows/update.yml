@@ -33,39 +33,26 @@ jobs:
       - name: Update fetch-ax to the latest version
         run: |
           npm install practice_cicd@latest
-          npm install
-
-      - name: Check for changes
-        id: check_changes
-        run: |
-          if [[ -n "$(git status --porcelain)" ]]; then
-            echo "changes=true" >> $GITHUB_ENV
-          else
-            echo "changes=false" >> $GITHUB_ENV
-          fi
 
       - name: Commit changes
-        if: env.changes == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git config pull.rebase false
-          git pull origin main
           git add package.json package-lock.json
           git commit -m "setting: update fetch-ax to the latest version"
 
       - name: Push changes
-        if: env.changes == 'true'
         run: git push origin dev2
 
-      - name: Create Pull Request
-        if: env.changes == 'true'
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.PAT }}
-          source-branch: dev2
-          target-branch: main
-          title: 'Update fetch-ax to the latest version'
-          body: |
-            This PR updates the `fetch-ax` library to its latest version.
-            Please review and merge.
+      # - name: Create Pull Request
+      #   uses: peter-evans/create-pull-request@v6
+      #   with:
+      #     token: ${{ secrets.PAT }}
+      #     base: main
+      #     branch: dev2
+      #     commit-message: Create PR with changes
+      #     title: 'Update fetch-ax to the latest version'
+      #     body: |
+      #       This PR updates the `fetch-ax` library to its latest version.
+      #       Please review and merge.
+      #     always-create: true
