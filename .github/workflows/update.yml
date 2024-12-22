@@ -44,15 +44,14 @@ jobs:
       - name: Push changes
         run: git push origin dev2
 
-      # - name: Create Pull Request
-      #   uses: peter-evans/create-pull-request@v6
-      #   with:
-      #     token: ${{ secrets.PAT }}
-      #     base: main
-      #     branch: dev2
-      #     commit-message: Create PR with changes
-      #     title: 'Update fetch-ax to the latest version'
-      #     body: |
-      #       This PR updates the `fetch-ax` library to its latest version.
-      #       Please review and merge.
-      #     always-create: true
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.PAT }}
+          base: main
+          branch: dev2
+          commit-message: Create PR with changes
+          title: 'Update fetch-ax to the latest version'
+          body: |
+            This PR updates the `fetch-ax` library to its latest version.
+            Please review and merge.
