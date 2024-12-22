@@ -10,8 +10,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          ref: dev2
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -32,6 +30,8 @@ jobs:
 
       - name: Update fetch-ax to the latest version
         run: |
+          git branch dev3
+          git checkout dev3
           npm install practice_cicd@latest
 
       - name: Commit changes
@@ -42,12 +42,12 @@ jobs:
           git commit -m "setting: update fetch-ax to the latest version"
 
       - name: Push changes
-        run: git push origin dev2
+        run: git push origin dev3
 
       - name: Create pull request ## step 이름 설정
         uses: thomaseizinger/create-pull-request@master
         with: ## Input 데이터 설정
           GITHUB_TOKEN: ${{ secrets.PAT }}
-          head: dev2
+          head: dev3
           base: main
           title: 'An automatically created PR!'
