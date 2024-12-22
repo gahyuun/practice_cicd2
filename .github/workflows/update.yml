@@ -48,6 +48,6 @@ jobs:
         uses: thomaseizinger/create-pull-request@master
         with: ## Input 데이터 설정
           GITHUB_TOKEN: ${{ secrets.PAT }}
-          head: ${{ github.ref }}
+          head: dev2
           base: main
           title: 'An automatically created PR!'
