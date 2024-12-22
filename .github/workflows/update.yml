@@ -33,7 +33,6 @@ jobs:
       - name: Update fetch-ax to the latest version
         run: |
           npm install practice_cicd@latest
-          npm install
 
       - name: Commit changes
         run: |
