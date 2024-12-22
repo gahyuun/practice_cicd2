@@ -34,15 +34,15 @@ jobs:
         run: |
           npm install practice_cicd@latest
 
-      # - name: Commit changes
-      #   run: |
-      #     git config user.name "github-actions[bot]"
-      #     git config user.email "github-actions[bot]@users.noreply.github.com"
-      #     git add package.json package-lock.json
-      #     git commit -m "setting: update fetch-ax to the latest version"
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add package.json package-lock.json
+          git commit -m "setting: update fetch-ax to the latest version"
 
-      # - name: Push changes
-      #   run: git push origin dev2
+      - name: Push changes
+        run: git push origin dev2
 
       # - name: Create Pull Request
       #   uses: peter-evans/create-pull-request@v6
