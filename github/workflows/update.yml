@@ -60,7 +60,7 @@ jobs:
         if: env.changes == 'true'
         uses: peter-evans/create-pull-request@v5
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT }}
           source-branch: dev
           target-branch: main
           title: 'Update fetch-ax to the latest version'
