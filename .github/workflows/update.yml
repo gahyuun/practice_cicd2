@@ -67,3 +67,6 @@ jobs:
           body: |
             This PR updates the `fetch-ax` library to its latest version.
             Please review and merge.
+              commit-message: 'setting: update fetch-ax to the latest version'
+          branch-suffix: timestamp
+          always-create: true
