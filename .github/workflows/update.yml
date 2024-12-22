@@ -55,5 +55,4 @@ jobs:
           body: |
             This PR updates the `fetch-ax` library to its latest version.
             Please review and merge.
-          branch-suffix: timestamp
           always-create: true
