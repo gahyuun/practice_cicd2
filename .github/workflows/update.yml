@@ -38,7 +38,8 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          if [[ -n "$(git status --porcelain)" ]]; then
+          git fetch origin main
+          if [[ -n "$(git diff origin/main -- package.json package-lock.json)" ]]; then
             echo "changes=true" >> $GITHUB_ENV
           else
             echo "changes=false" >> $GITHUB_ENV
@@ -67,6 +68,6 @@ jobs:
           body: |
             This PR updates the `fetch-ax` library to its latest version.
             Please review and merge.
-              commit-message: 'setting: update fetch-ax to the latest version'
+          commit-message: 'setting: update fetch-ax to the latest version'
           branch-suffix: timestamp
           always-create: true
