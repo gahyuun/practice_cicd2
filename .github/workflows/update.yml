@@ -48,8 +48,7 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.PAT }}
-          base: main
-          branch: dev2
+          branch: main
           commit-message: Create PR with changes
           title: 'Update fetch-ax to the latest version'
           body: |
