@@ -35,18 +35,7 @@ jobs:
           npm install practice_cicd@latest
           npm install
 
-      - name: Check for changes
-        id: check_changes
-        run: |
-          git fetch origin main
-          if [[ -n "$(git diff origin/main -- package.json package-lock.json)" ]]; then
-            echo "changes=true" >> $GITHUB_ENV
-          else
-            echo "changes=false" >> $GITHUB_ENV
-          fi
-
       - name: Commit changes
-        if: env.changes == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -54,11 +43,9 @@ jobs:
           git commit -m "setting: update fetch-ax to the latest version"
 
       - name: Push changes
-        if: env.changes == 'true'
         run: git push origin dev2
 
       - name: Create Pull Request
-        if: env.changes == 'true'
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.PAT }}
