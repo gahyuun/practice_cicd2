@@ -49,7 +49,7 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
           base: main
-          branch: ${{ github.ref }}
+          branch: dev2
           commit-message: Create PR with changes
           title: 'Update fetch-ax to the latest version'
           body: |
