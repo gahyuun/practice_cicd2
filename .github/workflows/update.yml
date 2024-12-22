@@ -11,7 +11,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          ref: dev
+          ref: dev2
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -56,14 +56,14 @@ jobs:
 
       - name: Push changes
         if: env.changes == 'true'
-        run: git push origin dev
+        run: git push origin dev2
 
       - name: Create Pull Request
         if: env.changes == 'true'
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.PAT }}
-          source-branch: dev
+          source-branch: dev2
           target-branch: main
           title: 'Update fetch-ax to the latest version'
           body: |
