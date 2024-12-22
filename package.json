@@ -10,6 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "lodash": "^4.17.21",
-    "practice_cicd": "^4.8.15"
+    "practice_cicd": "^4.11.15"
   }
 }
