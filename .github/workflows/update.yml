@@ -32,34 +32,27 @@ jobs:
 
       - name: Update fetch-ax to the latest version
         run: |
-          CURRENT_VERSION=$(npm list practice_cicd --depth=0 | grep practice_cicd | awk -F@ '{print $2}')
-          LATEST_VERSION=$(npm show practice_cicd version)
-          if [ "$CURRENT_VERSION" != "$LATEST_VERSION" ]; then
-            npm install practice_cicd@latest --force
-            npm install --package-lock-only
-          else
-            echo "Already up-to-date"
-          fi
+          npm install practice_cicd@latest
 
-      - name: Commit changes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add package.json package-lock.json
-          git commit -m "setting: update fetch-ax to the latest version"
+      # - name: Commit changes
+      #   run: |
+      #     git config user.name "github-actions[bot]"
+      #     git config user.email "github-actions[bot]@users.noreply.github.com"
+      #     git add package.json package-lock.json
+      #     git commit -m "setting: update fetch-ax to the latest version"
 
-      - name: Push changes
-        run: git push origin dev2
+      # - name: Push changes
+      #   run: git push origin dev2
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.PAT }}
-          base: main
-          branch: dev2
-          commit-message: Create PR with changes
-          title: 'Update fetch-ax to the latest version'
-          body: |
-            This PR updates the `fetch-ax` library to its latest version.
-            Please review and merge.
-          always-create: true
+      # - name: Create Pull Request
+      #   uses: peter-evans/create-pull-request@v6
+      #   with:
+      #     token: ${{ secrets.PAT }}
+      #     base: main
+      #     branch: dev2
+      #     commit-message: Create PR with changes
+      #     title: 'Update fetch-ax to the latest version'
+      #     body: |
+      #       This PR updates the `fetch-ax` library to its latest version.
+      #       Please review and merge.
+      #     always-create: true
